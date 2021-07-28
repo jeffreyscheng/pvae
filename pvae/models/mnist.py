@@ -76,10 +76,10 @@ class Mnist(VAE):
     def generate(self, runPath, epoch):
         N, K = 64, 9
         mean, means, samples = super(Mnist, self).generate(N, K)
-        save_image(mean.data.cpu(), '{}/gen_mean_{:03d}.png'.format(runPath, epoch))
-        save_image(means.data.cpu(), '{}/gen_means_{:03d}.png'.format(runPath, epoch))
+        save_image(mean.squeeze(dim=0).data.cpu(), '{}/gen_mean_{:03d}.png'.format(runPath, epoch))
+        save_image(means.squeeze(dim=0).data.cpu(), '{}/gen_means_{:03d}.png'.format(runPath, epoch))
 
     def reconstruct(self, data, runPath, epoch):
         recon = super(Mnist, self).reconstruct(data[:8])
-        comp = torch.cat([data[:8], recon])
+        comp = torch.cat([data[:8], recon.squeeze(dim=0)])
         save_image(comp.data.cpu(), '{}/recon_{:03d}.png'.format(runPath, epoch))
