@@ -6,7 +6,6 @@ with open('requirements.txt') as fp:
 
 setup(name='pvae',
       version='0.2',
-      install_requires=install_requires,
       description='Pytorch implementation of Poincaré Variational Auto-Encoders',
       long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
       url='https://github.com/emilemathieu/pvae',
